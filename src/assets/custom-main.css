@@ -1,3 +1,10 @@
 .login-container{
     height: 100vh;
 }
+
+.copyrights-brunel
+{
+  text-align: center;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}

@@ -8,3 +8,31 @@
   margin-top: 1rem;
   padding-bottom: 1rem;
 }
+
+.logo-padding{
+  padding: 2rem;
+}
+
+.logo-main{
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.x-dashboard-dark .page-container .page-content .page-content-wrap .x-hnavigation .x-hnavigation-logo > a{
+  background: none;
+  text-indent: 0px;
+  font-size: 1.5rem!important;
+  padding-left: 1rem;
+}
+
+.logo-main>a{
+  color: white!important;
+}
+
+.x-dashboard-dark .page-container .page-content .page-content-wrap .x-hnavigation .x-hnavigation-logo > a:hover , .logo-main>a:hover{
+  text-decoration: none;
+  color: white;
+
+}

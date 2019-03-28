@@ -4,15 +4,20 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { UIModule } from './ui/ui.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './guards/auth.guard';
+import { GuestGuard } from './guards/guest.guard';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: './main/main.module#MainModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
     loadChildren: './authentication/authentication.module#AuthenticationModule',
+    canActivate: [GuestGuard]
   },
 ];
 
@@ -23,6 +28,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     UIModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

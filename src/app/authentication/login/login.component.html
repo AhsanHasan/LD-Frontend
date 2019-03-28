@@ -4,35 +4,39 @@
     <div class="login-logo"></div>
     <div class="login-body">
       <div class="login-title"><strong>Welcome</strong>, Please login</div>
-      <form action="index.html" class="form-horizontal" method="post">
-        <div class="form-group">
+      <form #loginForm="ngForm" (submit)="login(loginForm)" class="form-horizontal">
+        <div class="form-group" [ngClass]="{'has-error': loginForm.submitted && email.invalid}">
           <div class="col-md-12">
-            <input type="text" class="form-control" placeholder="Username" />
+            <input type="email" required #email="ngModel" ngModel class="form-control" placeholder="Email" name="email"/>
+            <span class="help-block" *ngIf="loginForm.submitted && email.invalid">
+              {{email.errors.required? 'Email is required': ''}}
+              {{email.errors.invalid? 'Email is invalid': ''}}
+              {{email.errors.server? email.errors.server: ''}}
+            </span>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': loginForm.submitted && password.invalid}">
+          <div class="col-md-12">
+            <input type="password" required #password="ngModel" ngModel class="form-control" placeholder="Password" name="password" />
+            <span class="help-block" *ngIf="loginForm.submitted && password.invalid">
+              {{password.errors.required? 'Password is required': ''}}
+              {{password.errors.server? password.errors.server: ''}}
+            </span>
           </div>
         </div>
         <div class="form-group">
-          <div class="col-md-12">
-            <input type="password" class="form-control" placeholder="Password" />
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-md-6">
-            <a href="#" class="btn btn-link btn-block">Forgot your password?</a>
-          </div>
-          <div class="col-md-6">
-            <button class="btn btn-info btn-block">Log In</button>
+          <div class="col-md-offset-6 col-md-6">
+            <button type="submit" class="btn btn-info btn-block">Log In</button>
           </div>
         </div>
       </form>
     </div>
     <div class="login-footer">
       <div class="pull-left">
-        &copy; 2017 AppName
+        &copy; 2019 Criminalysis
       </div>
       <div class="pull-right">
-        <a href="#">About</a> |
-        <a href="#">Privacy</a> |
-        <a href="#">Contact Us</a>
+        <a href="#">About</a>
       </div>
     </div>
   </div>

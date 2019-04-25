@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
   private LOGIN_ENDPOINT = '/login';
   private AUTHENTICATED_ENDPOINT = '/check-auth';
+  private GETPROFILE_ENDPOINT = '/get-profile';
+
+  public profile: any;
 
   constructor(
     private http: HttpClient,
@@ -33,14 +36,26 @@ export class AuthenticationService {
     this.router.navigate(['/']);
   }
 
-  /*  public async getProfile() {
-     try {
+  /**
+   * Get profile of the user
+   */
+   public async getProfile() {
+    if (localStorage.getItem('token') == null) { return false; } else {
+      try {
+        const query = {
+          token: localStorage.getItem('token')
+        };
+        const response = await this.http.get(environment.apiBase + this.GETPROFILE_ENDPOINT, {params: query}).toPromise() as any;
+        this.profile = response.data.user;
+      } catch (error) {
+        return false;
+      }
+    }
+   }
 
-     } catch (error) {
-
-     }
-   } */
-
+   /**
+    * check if user is authenticated and the token is valid
+    */
   public async isAuthenticated() {
     if (localStorage.getItem('token') == null) { return false; } else {
       try {
@@ -48,10 +63,17 @@ export class AuthenticationService {
           token: localStorage.getItem('token')
         };
         const response = await this.http.get(environment.apiBase + this.AUTHENTICATED_ENDPOINT, {params: query}).toPromise() as any;
+        const authenticated = response.data.authenticated;
+        if (authenticated) { await this.getProfile(); }
         return response.data.authenticated;
       } catch (error) {
         return false;
       }
     }
+  }
+
+  public logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

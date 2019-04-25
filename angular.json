@@ -23,14 +23,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/custom-main.css"
+              "src/assets/custom-main.css",
+              "src/assets/css/loader.css"
             ],
             "scripts": [
               "src/assets/js/plugins/jquery/jquery.min.js",
               "src/assets/js/plugins/jquery/jquery-ui.min.js",
               "src/assets/js/plugins/bootstrap/bootstrap.min.js",
               "src/assets/js/plugins.js",
-              "src/assets/js/actions.js"
+              "src/assets/js/actions.js",
+              "src/assets/js/loader.js"
             ]
           },
           "configurations": {

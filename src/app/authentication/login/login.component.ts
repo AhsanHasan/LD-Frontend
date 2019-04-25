@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Utils } from 'src/app/utils';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
    * @param loginForm NgForm
    */
   async login(loginForm: NgForm) {
+    Utils.showLoader('.login-body');
     try {
       if (loginForm.valid) {
         await this.authenticationService.login(loginForm.value);
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit {
         loginForm.controls.email.setErrors({server: errorMessage});
       }
     }
+    Utils.hideLoader('.login-body');
   }
 
 }

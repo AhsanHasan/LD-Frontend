@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { InjectionModule } from './helpers/injection.module';
 import { UIModule } from './ui/ui.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './guards/auth.guard';
@@ -29,6 +30,7 @@ const routes: Routes = [
     BrowserModule,
     UIModule,
     HttpClientModule,
+    InjectionModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

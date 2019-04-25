@@ -3,11 +3,11 @@
     <a routerLink="/">Atlant</a>
   </div>
   <ul>
-    <li class="active">
-      <a href="#">Home</a>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a routerLink="/">Dashboard</a>
     </li>
-    <li>
-      <a routerLink="/login">Login</a>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a routerLink="/crime-data">Crime Data</a>
     </li>
   </ul>
 
@@ -16,15 +16,11 @@
       <span class="fa fa-bars"></span>
     </div>
     <div class="pull-right">
-      <div class="x-features-search">
-        <input type="text" name="search">
-        <input type="submit">
-      </div>
       <div class="x-features-profile">
-        <img src="assets/assets/images/users/avatar.jpg">
+        <img [src]="avatarLink">
         <ul class="xn-drop-left animated zoomIn">
           <li><a href="pages-lock-screen.html"><span class="fa fa-lock"></span> Lock Screen</a></li>
-          <li><a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign
+          <li><a href="#" (click)="signout($event)" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign
               Out</a></li>
         </ul>
       </div>

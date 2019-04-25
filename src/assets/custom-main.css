@@ -1,3 +1,7 @@
 .login-container{
     height: 100vh;
 }
+
+.x-content{
+    height: calc(100vh - 150px);
+}

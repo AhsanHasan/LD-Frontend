@@ -1,0 +1,9 @@
+.button {
+    font-size: xx-large !important;
+    padding: 1px !important;
+    cursor: pointer !important;
+}
+
+.disabled {
+    color: gray !important;
+}

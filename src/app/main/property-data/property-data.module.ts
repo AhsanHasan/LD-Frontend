@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CrimeDataComponent } from './crime-data.component';
+import { PropertyDataComponent } from './property-data.component';
 import { RouterModule } from '@angular/router';
-import { CrimeDataResolver } from '../../resolvers/crime-data.resolver';
 import { FormsModule } from '@angular/forms';
+import { PropertyDataResolver } from 'src/app/resolvers/property-data.resolver';
 import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
-  declarations: [CrimeDataComponent],
+  declarations: [PropertyDataComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -15,10 +15,10 @@ import { ChartsModule } from 'ng2-charts';
     RouterModule.forChild([
       {
         path: '',
-        component: CrimeDataComponent,
-        resolve: { data: CrimeDataResolver }
+        component: PropertyDataComponent,
+        resolve: { data: PropertyDataResolver }
       }
     ])
   ]
 })
-export class CrimeDataModule { }
+export class PropertyDataModule { }

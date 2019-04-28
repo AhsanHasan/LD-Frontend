@@ -1,0 +1,133 @@
+<div class="page-title">
+  <h2>
+    <span class="fa fa-arrow-circle-o-left"></span> Property Exploration</h2>
+</div>
+<div class="page-content-wrap">
+  <!-- START RESPONSIVE TABLES -->
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <div class="col-lg-10">
+            <h3 class="panel-title">Property</h3>
+          </div>
+          <div class="col-lg-2 text-right">
+            <span class="button fa fa-arrow-circle-o-left" (click)="goPrevious()"></span>
+            <span class="button fa fa-arrow-circle-o-right" (click)="goNext()"></span>
+          </div>
+        </div>
+
+        <div class="panel-body panel-body-table">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-actions">
+              <thead>
+                <tr>
+                  <td>Title</td>
+                  <td>Borough</td>
+                  <td>Postcode</td>
+                  <td>Property Type</td>
+                  <td>Bedrooms</td>
+                  <td>Bathrooms</td>
+                  <td>Car Spaces</td>
+                  <td>Construction Year</td>
+                  <td>Price</td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let property of properties">
+                    <td>{{property.title}}</td>
+                    <td>{{property.borough}}</td>
+                    <td>{{property.postCode}}</td>
+                    <td>{{property.property_type}}</td>
+                    <td>{{property.bedroom_number}}</td>
+                    <td>{{property.bathroom_number}}</td>
+                    <td>{{property.car_spaces}}</td>
+                    <td>{{property.construction_year}}</td>
+                    <td>{{property.price}}</td>
+                    <td>
+                      <button class="btn btn-info"><i class="fa fa-eye"></i></button>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default" id="chart-panel">
+          <div class="panel-body">
+            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+              [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+            </canvas>
+          </div>
+        </div>
+      <div class="panel panel-default">
+        <form #propertyForm="ngForm" (submit)="getProperties(propertyForm)" class="form-horizontal">
+          <div class="panel-heading">
+            <h3 class="panel-title">Filters</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="col-md-4 col-xs-12 control-label">Type</label>
+              <div class="col-md-8 col-xs-12">
+                <select name="propertyType" #propertyType="ngModel" ngModel class="form-control">
+                  <option value="" disabled>Please Select</option>
+                  <option value="flat">flat</option>
+                  <option value="house">house</option>
+                  <option value="land">land</option>
+                  <option value="property">property</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 col-xs-12 control-label">Boroughs</label>
+              <div class="col-md-8 col-xs-12">
+                <select name="borough" #borough="ngModel" ngModel class="form-control">
+                  <option value="" disabled>Please Select</option>
+                  <option [value]="option" *ngFor="let option of boroughs">{{option}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 col-xs-12 control-label">Postcode</label>
+              <div class="col-md-8 col-xs-12">
+                <select name="postcode" #postcode="ngModel" ngModel class="form-control">
+                  <option value="" disabled>Please Select</option>
+                  <option [value]="option" *ngFor="let option of postcodes">{{option}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 col-xs-12 control-label">Bed</label>
+              <div class="col-md-4 col-xs-12">
+                <input type="number" [ngModel]="bedrooms.min" name="minBed" #minBed="ngModel" class="form-control" [min]="bedrooms.min" [max]="bedrooms.max">
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <input type="number" [ngModel]="bedrooms.max" name="maxBed" #maxBed="ngModel" class="form-control" [min]="bedrooms.min" [max]="bedrooms.max">
+              </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 col-xs-12 control-label">Price</label>
+                <div class="col-md-4 col-xs-12">
+                  <input type="number" [ngModel]="prices.min" name="minPrice" #minPrice="ngModel" class="form-control" [min]="prices.min" [max]="prices.max">
+                </div>
+                <div class="col-md-4 col-xs-12">
+                  <input type="number" [ngModel]="prices.max" name="maxPrice" #maxPrice="ngModel" class="form-control" [min]="prices.min" [max]="prices.max">
+                </div>
+              </div>
+          </div>
+          <div class="panel-footer">
+            <button type="button" class="btn btn-default" (click)="clearForm()">Clear Form</button>
+            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END RESPONSIVE TABLES -->
+</div>

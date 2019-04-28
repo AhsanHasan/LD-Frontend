@@ -12,6 +12,7 @@ export class CrimeDataService {
     private POSTCODES_ENDPOINT = '/get-crime-postcodes';
     private BOROUGHS_ENDPOINT = '/get-crime-boroughs';
     private CRIME_DATA_ENDPOINT = '/get-all-crimes';
+    private CRIME_CHART_ENDPOINT = '/crime-data/bar-chart';
 
     public profile: any;
 
@@ -20,9 +21,6 @@ export class CrimeDataService {
         private router: Router
     ) { }
 
-    /**
-     * Get profile of the user
-     */
     public async getCategories() {
         try {
             const response = await this.http.get(environment.apiBase + this.CATEGORY_ENDPOINT).toPromise() as any;
@@ -32,9 +30,6 @@ export class CrimeDataService {
         }
     }
 
-    /**
-     * Get profile of the user
-     */
     public async getMonths() {
         try {
             const response = await this.http.get(environment.apiBase + this.MONTHS_ENDPOINT).toPromise() as any;
@@ -43,9 +38,7 @@ export class CrimeDataService {
             console.log(error);
         }
     }
-    /**
-     * Get profile of the user
-     */
+
     public async getPostCodes() {
         try {
             const response = await this.http.get(environment.apiBase + this.POSTCODES_ENDPOINT).toPromise() as any;
@@ -54,9 +47,7 @@ export class CrimeDataService {
             console.log(error);
         }
     }
-    /**
-     * Get profile of the user
-     */
+
     public async getBoroughs() {
         try {
             const response = await this.http.get(environment.apiBase + this.BOROUGHS_ENDPOINT).toPromise() as any;
@@ -66,15 +57,12 @@ export class CrimeDataService {
         }
     }
 
-    /**
- * Get profile of the user
- */
     public async getCrimeData(body) {
-        try {
-            const response = await this.http.get(environment.apiBase + this.CRIME_DATA_ENDPOINT, { params: body }).toPromise() as any;
-            return response.data;
-        } catch (error) {
-            console.log(error);
-        }
+        const response = await this.http.get(environment.apiBase + this.CRIME_DATA_ENDPOINT, { params: body }).toPromise() as any;
+        return response.data;
+    }
+
+    public async getCrimeChart(query) {
+        return this.http.get(environment.apiBase + this.CRIME_CHART_ENDPOINT, { params: query }).toPromise();
     }
 }

@@ -9,10 +9,10 @@
       <div class="panel panel-default">
 
         <div class="panel-heading">
-          <div class="col-lg-11">
+          <div class="col-lg-10">
             <h3 class="panel-title">Crime Data</h3>
           </div>
-          <div class="col-lg-1">
+          <div class="col-lg-2 text-right">
             <span class="button fa fa-arrow-circle-o-left" (click)="goPrevious()"></span>
             <span class="button fa fa-arrow-circle-o-right" (click)="goNext()"></span>
           </div>
@@ -51,6 +51,13 @@
 
     </div>
     <div class="col-md-4">
+      <div class="panel panel-default" id="chart-panel">
+        <div class="panel-body">
+          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+            [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+          </canvas>
+        </div>
+      </div>
       <div class="panel panel-default">
         <form #crimeForm="ngForm" (submit)="getData(crimeForm)" class="form-horizontal">
           <div class="panel-heading">
@@ -114,8 +121,8 @@
             </div>
           </div>
           <div class="panel-footer">
-            <!-- <button class="btn btn-default">Clear Form</button> -->
-            <button class="btn btn-primary pull-right">Submit</button>
+            <button type="button" class="btn btn-default" (click)="clearForm()">Clear Form</button>
+            <button type="submit" class="btn btn-primary pull-right">Submit</button>
           </div>
         </form>
       </div>

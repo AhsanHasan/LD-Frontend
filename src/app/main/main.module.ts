@@ -21,6 +21,10 @@ import { UIModule } from '../ui/ui.module';
           {
             path: 'crime-data',
             loadChildren: './crime-data/crime-data.module#CrimeDataModule'
+          },
+          {
+            path: 'property-data',
+            loadChildren: './property-data/property-data.module#PropertyDataModule'
           }
         ]
       }

@@ -1,0 +1,95 @@
+<div class="page-title">
+  <h2><span class="fa fa-arrow-circle-o-left"></span> Crime Data Exploration</h2>
+</div>
+<div class="page-content-wrap">
+  <!-- START RESPONSIVE TABLES -->
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">Crime Data</h3>
+        </div>
+
+        <div class="panel-body panel-body-table">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-actions">
+              <thead>
+                <tr>
+                  <th width="50">id</th>
+                  <th>name</th>
+                  <th width="100">status</th>
+                  <th width="100">amount</th>
+                  <th width="100">date</th>
+                  <th width="120">actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">1</td>
+                  <td><strong>John Doe</strong></td>
+                  <td><span class="label label-success">New</span></td>
+                  <td>$430.20</td>
+                  <td>24/09/2017</td>
+                  <td>
+                    <button class="btn btn-default btn-rounded btn-condensed btn-sm"><span
+                        class="fa fa-pencil"></span></button>
+                    <button class="btn btn-danger btn-rounded btn-condensed btn-sm"
+                      onclick="delete_row('trow_1');"><span class="fa fa-times"></span></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <form class="form-horizontal">
+          <div class="panel-heading">
+            <h3 class="panel-title">Filters</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="col-md-4 col-xs-12 control-label">Categories</label>
+              <div class="col-md-8 col-xs-12">
+                <select name="categories" class="form-control">
+                  <option value="">Please Select</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 col-xs-12 control-label">Dates</label>
+              <div class="col-md-4 col-xs-12">
+                <select name="year" class="form-control">
+                  <option value="">Please Select</option>
+                </select>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <select name="month" class="form-control">
+                  <option value="">Please Select</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 col-xs-12 control-label">Postcodes</label>
+              <div class="col-md-8 col-xs-12">
+                <select name="postcodes" class="form-control">
+                  <option value="">Please Select</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <button class="btn btn-default">Clear Form</button>
+            <button class="btn btn-primary pull-right">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END RESPONSIVE TABLES -->
+</div>

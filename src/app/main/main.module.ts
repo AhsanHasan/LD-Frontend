@@ -17,6 +17,10 @@ import { UIModule } from '../ui/ui.module';
           {
             path: '',
             loadChildren: './dashboard/dashboard.module#DashboardModule'
+          },
+          {
+            path: 'crime-data',
+            loadChildren: './crime-data/crime-data.module#CrimeDataModule'
           }
         ]
       }
